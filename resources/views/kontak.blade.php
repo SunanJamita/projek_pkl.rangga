@@ -5,7 +5,7 @@
 @push('styles')
 <style>
     .page-header {
-        background: linear-gradient(135deg, rgba(16, 85, 201, 0.9), rgba(118, 75, 162, 0.9)),
+        background: linear-gradient(135deg, rgba(16, 85, 201, 0.9), rgba(12, 74, 156, 0.9)),
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><polygon fill="%23ffffff15" points="0,0 1000,100 1000,300 0,200"/></svg>');
         background-size: cover;
         color: white;
@@ -267,28 +267,39 @@
     .social-links {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 0.6rem;
         margin-top: 3rem;
     }
 
     .social-btn {
-        width: 50px;
-        height: 50px;
+        width: 42px;
+        height: 42px;
         background: white;
         border: 2px solid #e8ecef;
-        border-radius: 50%;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #666;
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1rem;
         transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .social-btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(16, 85, 201, 0.3);
+    }
+
+    .social-btn:active {
+        transform: translateY(-1px);
+        outline: none;
     }
 
     .social-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         color: white;
         text-decoration: none;
     }
@@ -398,6 +409,16 @@
             max-width: 250px;
             justify-content: center;
         }
+        
+        .social-links {
+            gap: 0.5rem;
+        }
+        
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+        }
     }
 </style>
 @endpush
@@ -427,9 +448,9 @@
                     </div>
                     <div class="contact-details">
                         <h4>Alamat Kantor</h4>
-                        <p>Jl. Yudanegara No. 12<br>
-                        Kecamatan Cipedes<br>
-                        Kota Tasikmalaya, Jawa Barat 46133</p>
+                        <p>Jl. Letnan Harun No. 1, Sukamulya<br>
+                        Kec. Bungursari<br>
+                        Tasikmalaya, Jawa Barat 46151</p>
                     </div>
                 </div>
 
@@ -439,8 +460,7 @@
                     </div>
                     <div class="contact-details">
                         <h4>Telepon</h4>
-                        <p><a href="tel:+62265331433">(0265) 331-433</a><br>
-                        <a href="tel:+62265334455">(0265) 334-455</a></p>
+                        <p><a href="tel:+62265331548">(0265) 331-548</a></p>
                     </div>
                 </div>
 
@@ -448,6 +468,11 @@
                     <div class="contact-icon">
                         <i class="fas fa-fax"></i>
                     </div>
+                    <div class="contact-details">
+                        <h4>Fax</h4>
+                        <p>(0265) 331-549</p>
+                    </div>
+                </div>
                     <div class="contact-details">
                         <h4>Fax</h4>
                         <p>(0265) 331-466</p>
@@ -678,13 +703,33 @@
         });
     });
 
-    // Social media link tracking (for analytics)
+    // Social media link tracking and blur fix
     document.querySelectorAll('.social-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
+            this.blur();
+            
             const platform = this.className.split(' ').find(cls => cls !== 'social-btn');
             console.log(`Social media click: ${platform}`);
-            // Here you would typically send analytics data
+            
+            // Open actual social media links
+            if (platform === 'facebook') {
+                window.open('https://facebook.com/inspektorat.tasikmalaya', '_blank');
+            } else if (platform === 'instagram') {
+                window.open('https://instagram.com/inspektorat.tasikmalaya', '_blank');
+            } else if (platform === 'youtube') {
+                window.open('https://youtube.com/@inspektorattasikmalaya', '_blank');
+            } else if (platform === 'twitter') {
+                window.open('https://twitter.com/inspektorat_tsk', '_blank');
+            }
+        });
+        
+        btn.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+        });
+        
+        btn.addEventListener('focus', function() {
+            this.style.outline = 'none';
         });
     });
 </script>

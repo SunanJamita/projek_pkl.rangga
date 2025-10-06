@@ -181,6 +181,18 @@
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
+        outline: none;
+        border: none;
+    }
+
+    .share-btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .share-btn:active {
+        transform: translateY(-1px);
+        outline: none;
     }
 
     .share-btn.facebook {

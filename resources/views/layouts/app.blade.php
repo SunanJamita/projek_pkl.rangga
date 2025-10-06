@@ -24,6 +24,20 @@
             box-sizing: border-box;
         }
 
+        /* Global outline fix untuk semua button dan link */
+        button, a, input, select, textarea {
+            outline: none !important;
+        }
+
+        button:focus, a:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(16, 85, 201, 0.3) !important;
+        }
+
+        *:focus {
+            outline: none !important;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -95,6 +109,52 @@
             position: relative;
         }
 
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(16, 85, 201, 0.1);
+            color: #1055C9;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item i {
+            width: 16px;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
         .nav-link {
             color: #555;
             text-decoration: none;
@@ -159,64 +219,105 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
             color: #ecf0f1;
+            font-weight: 600;
         }
 
         .footer-section p,
         .footer-section a {
             color: #bdc3c7;
-            line-height: 1.8;
+            line-height: 1.7;
             text-decoration: none;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             display: block;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
             color: #1055C9;
+            transition: color 0.3s ease;
         }
 
         .contact-info {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            align-items: flex-start;
+            gap: 0.8rem;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .contact-info i {
             color: #1055C9;
-            width: 20px;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info span {
+            flex: 1;
+            word-break: break-word;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            width: 45px;
-            height: 45px;
+            width: 36px;
+            height: 36px;
             background: linear-gradient(135deg, #1055C9, #0c4a9c);
-            border-radius: 12px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 0.85rem;
+            padding: 0;
+            outline: none;
+            border: none;
+        }
+
+        .social-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(16, 85, 201, 0.3);
+        }
+
+        .social-link:active {
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .social-link i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
         }
 
         .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(16, 85, 201, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 85, 201, 0.3);
+            color: white;
+            text-decoration: none;
         }
 
         .footer-bottom {
@@ -321,10 +422,70 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
+            }
+            
+            .footer-section {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .contact-info {
+                justify-content: center;
+                text-align: left;
+                max-width: 300px;
+                margin: 0 auto 1rem;
             }
 
             .social-links {
                 justify-content: center;
+            }
+            
+            .footer-container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content {
+                gap: 1.5rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .footer-section p,
+            .footer-section a {
+                font-size: 0.9rem;
+            }
+            
+            .contact-info {
+                gap: 0.6rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .contact-info i {
+                font-size: 0.8rem;
+                width: 16px;
+                height: 16px;
+            }
+            
+            .social-links {
+                gap: 0.5rem;
+            }
+            
+            .social-link {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
+                border-radius: 6px;
+            }
+            
+            .footer-bottom {
+                font-size: 0.85rem;
+                padding-top: 1.5rem;
             }
         }
 
@@ -372,10 +533,33 @@
                         <i class="fas fa-home"></i> Beranda
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('tentang-kami') }}" class="nav-link {{ request()->routeIs('tentang-kami') ? 'active' : '' }}">
-                        <i class="fas fa-users"></i> Tentang Kami
+                <li class="nav-item dropdown">
+                    <a href="{{ route('tentang-kami') }}" class="nav-link {{ request()->routeIs('tentang-kami*') || request()->routeIs('sejarah') || request()->routeIs('tupoksi') || request()->routeIs('struktur') || request()->routeIs('dukungan') || request()->routeIs('statistik') || request()->routeIs('survey') ? 'active' : '' }}">
+                        <i class="fas fa-users"></i> Tentang Kami <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 0.3rem;"></i>
                     </a>
+                    <div class="dropdown-menu">
+                        <a href="{{ route('tentang-kami') }}" class="dropdown-item {{ request()->routeIs('tentang-kami') ? 'active' : '' }}">
+                            <i class="fas fa-info-circle"></i> Profil
+                        </a>
+                        <a href="{{ route('sejarah') }}" class="dropdown-item {{ request()->routeIs('sejarah') ? 'active' : '' }}">
+                            <i class="fas fa-history"></i> Sejarah
+                        </a>
+                        <a href="{{ route('tupoksi') }}" class="dropdown-item {{ request()->routeIs('tupoksi') ? 'active' : '' }}">
+                            <i class="fas fa-tasks"></i> Tupoksi
+                        </a>
+                        <a href="{{ route('struktur') }}" class="dropdown-item {{ request()->routeIs('struktur') ? 'active' : '' }}">
+                            <i class="fas fa-sitemap"></i> Struktur Organisasi
+                        </a>
+                        <a href="{{ route('dukungan') }}" class="dropdown-item {{ request()->routeIs('dukungan') ? 'active' : '' }}">
+                            <i class="fas fa-hands-helping"></i> Dukungan
+                        </a>
+                        <a href="{{ route('statistik') }}" class="dropdown-item {{ request()->routeIs('statistik') ? 'active' : '' }}">
+                            <i class="fas fa-chart-bar"></i> Statistik
+                        </a>
+                        <a href="{{ route('survey') }}" class="dropdown-item {{ request()->routeIs('survey') ? 'active' : '' }}">
+                            <i class="fas fa-poll"></i> Survey
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('berita.index') }}" class="nav-link {{ request()->routeIs('berita.*') ? 'active' : '' }}">
@@ -453,11 +637,15 @@
                     <h3>Kontak Kami</h3>
                     <div class="contact-info">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Jl. Let. Harun, Bungursari, Tasikmalaya, Jawa Barat 46151</span>
+                        <span>Jl. Letnan Harun No. 1, Sukamulya, Kec. Bungursari, Tasikmalaya, Jawa Barat 46151</span>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
-                        <span>(0265) 7521453</span>
+                        <span>(0265) 331548</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-fax"></i>
+                        <span>(0265) 331549</span>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-envelope"></i>
@@ -516,6 +704,34 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // Fix social media links blur issue
+        document.querySelectorAll('.social-link, .social-btn').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.blur();
+                
+                // Here you can add actual social media links
+                const platform = this.querySelector('i').className;
+                if (platform.includes('fa-facebook')) {
+                    window.open('https://facebook.com/inspektorat.tasikmalaya', '_blank');
+                } else if (platform.includes('fa-twitter')) {
+                    window.open('https://twitter.com/inspektorat_tsk', '_blank');
+                } else if (platform.includes('fa-instagram')) {
+                    window.open('https://instagram.com/inspektorat.tasikmalaya', '_blank');
+                } else if (platform.includes('fa-youtube')) {
+                    window.open('https://youtube.com/@inspektorattasikmalaya', '_blank');
+                }
+            });
+            
+            link.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+            });
+            
+            link.addEventListener('focus', function() {
+                this.style.outline = 'none';
             });
         });
     </script>

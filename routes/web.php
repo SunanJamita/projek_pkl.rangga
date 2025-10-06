@@ -9,8 +9,33 @@ Route::get('/', function () {
 
 // Tentang Kami
 Route::get('/tentang-kami', function () {
-    return view('tentang-kami');
+    return view('tentang-kami.index');
 })->name('tentang-kami');
+
+// Tentang Kami Submenu
+Route::get('/sejarah', function () {
+    return view('tentang-kami.sejarah');
+})->name('sejarah');
+
+Route::get('/tupoksi', function () {
+    return view('tentang-kami.tupoksi');
+})->name('tupoksi');
+
+Route::get('/struktur', function () {
+    return view('tentang-kami.struktur');
+})->name('struktur');
+
+Route::get('/dukungan', function () {
+    return view('tentang-kami.dukungan');
+})->name('dukungan');
+
+Route::get('/statistik', function () {
+    return view('tentang-kami.statistik');
+})->name('statistik');
+
+Route::get('/survey', function () {
+    return view('tentang-kami.survey');
+})->name('survey');
 
 // Berita
 Route::get('/berita', function () {
