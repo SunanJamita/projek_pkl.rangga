@@ -9,7 +9,7 @@
                     url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><polygon fill="%23ffffff15" points="0,0 1000,100 1000,300 0,200"/></svg>');
         background-size: cover;
         color: white;
-        padding: 8rem 0 4rem;
+        padding: 7rem 0 3rem;
         text-align: center;
     }
 
@@ -21,12 +21,12 @@
     }
 
     .sakip-container {
-        padding: 4rem 0;
+        padding: 3rem 0;
     }
 
     .intro-section {
         max-width: 800px;
-        margin: 0 auto 4rem;
+        margin: 0 auto 3rem;
         text-align: center;
     }
 
@@ -41,7 +41,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
 
     .overview-card {
@@ -98,8 +98,8 @@
 
     .documents-section {
         background: #f8f9fa;
-        padding: 4rem 0;
-        margin: 4rem 0;
+        padding: 3rem 0;
+        margin: 3rem 0;
         border-radius: 20px;
     }
 
@@ -108,7 +108,7 @@
         font-size: 2.5rem;
         font-weight: 700;
         color: #2c3e50;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .documents-grid {
@@ -181,15 +181,16 @@
     }
 
     .action-btn {
-        padding: 0.75rem 1.5rem;
-        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
     }
 
     .btn-view {
@@ -221,7 +222,7 @@
     }
 
     .performance-metrics {
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
 
     .metrics-grid {
@@ -281,9 +282,9 @@
     .evaluation-timeline {
         background: white;
         border-radius: 20px;
-        padding: 3rem;
+        padding: 2.5rem;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 
     .timeline-title {
@@ -291,7 +292,7 @@
         font-size: 2.2rem;
         font-weight: 700;
         color: #2c3e50;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .timeline {
@@ -312,7 +313,7 @@
     .timeline-item {
         display: flex;
         align-items: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         position: relative;
     }
 
@@ -386,6 +387,13 @@
         
         .document-actions {
             flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            justify-content: center;
         }
         
         .timeline::before {
@@ -409,7 +417,7 @@
 </style>
 @endpush
 
-@section('content")
+@section('content')
 <!-- Page Header -->
 <section class="page-header">
     <div class="container">

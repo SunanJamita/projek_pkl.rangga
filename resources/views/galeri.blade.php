@@ -80,7 +80,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 3rem;
+        font-size: 2.5rem;
         position: relative;
         overflow: hidden;
     }
@@ -116,14 +116,15 @@
     .view-btn {
         background: white;
         color: #333;
-        padding: 0.75rem 1.5rem;
-        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 500;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.4rem;
         transition: all 0.3s ease;
+        font-size: 0.85rem;
     }
 
     .view-btn:hover {
@@ -203,7 +204,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 3rem;
+        font-size: 2.5rem;
         position: relative;
         cursor: pointer;
     }
@@ -212,13 +213,13 @@
         position: absolute;
         background: rgba(255, 255, 255, 0.9);
         color: #1055C9;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         transition: all 0.3s ease;
     }
 
@@ -285,7 +286,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     .modal-info {
@@ -361,7 +362,20 @@
         
         .modal-image {
             height: 250px;
-            font-size: 3rem;
+            font-size: 2.5rem;
+        }
+        
+        .gallery-image {
+            font-size: 2rem;
+        }
+        
+        .video-thumbnail {
+            font-size: 2rem;
+        }
+        
+        .view-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
         }
     }
 </style>
