@@ -825,19 +825,11 @@
         </div>
         <!-- Map Info -->
         <div class="row mt-4">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="info-card" data-aos="fade-up" data-aos-delay="300">
                     <h4><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</h4>
                     <p>Jl. Letnan Harun No. 1, Sukamulya, Kec. Bungursari, Tasikmalaya, Jawa Barat 46151</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="info-card" data-aos="fade-up" data-aos-delay="400">
-                    <h4><i class="fas fa-directions"></i> Petunjuk Arah</h4>
-                    <p>Kantor Inspektorat berada di pusat kota Tasikmalaya, mudah diakses dari berbagai arah.</p>
-                    <a href="https://goo.gl/maps/example" target="_blank" class="btn btn-sm btn-outline-primary">
-                        <i class="fas fa-external-link-alt"></i> Buka di Google Maps
-                    </a>
+                    <p><i class="fas fa-info-circle"></i> Kantor Inspektorat berada di pusat kota Tasikmalaya, mudah diakses dari berbagai arah.</p>
                 </div>
             </div>
         </div>
