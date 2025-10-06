@@ -313,7 +313,7 @@
                 </div>
                 <div class="org-card inspektur-pembantu">
                     <div class="org-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-city"></i>
                     </div>
                     <div class="position-title">Inspektur Pembantu Wilayah II</div>
                     <div class="position-name">Drs. H. Iman Sulaeman, M.M</div>
@@ -381,7 +381,7 @@
                 </div>
                 <div class="detail-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="detail-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-city"></i>
                     </div>
                     <h3 class="detail-title">Inspektur Pembantu Wilayah II</h3>
                     <p class="detail-text">

@@ -247,7 +247,7 @@
                 <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="tupoksi-card">
                         <div class="card-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-city"></i>
                         </div>
                         <h3 class="card-title">Pembinaan SPIP</h3>
                         <p class="card-description">

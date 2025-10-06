@@ -503,7 +503,7 @@
 
             <div class="gallery-item" data-category="sosialisasi" data-aos="fade-up" data-aos-delay="700">
                 <div class="gallery-image">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-city"></i>
                     <div class="gallery-overlay">
                         <a href="#" class="view-btn" onclick="openModal('modal7')">
                             <i class="fas fa-expand"></i> Lihat
@@ -608,7 +608,7 @@
 
             <div class="video-item" data-aos="fade-up" data-aos-delay="300">
                 <div class="video-thumbnail" onclick="playVideo('video3')">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-city"></i>
                     <div class="play-button">
                         <i class="fas fa-play"></i>
                     </div>

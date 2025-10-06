@@ -332,7 +332,7 @@
             
             <div class="support-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="support-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-city"></i>
                 </div>
                 <h3 class="support-title">Whistleblowing System</h3>
                 <p class="support-description">

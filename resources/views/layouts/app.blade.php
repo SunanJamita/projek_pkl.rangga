@@ -10,8 +10,24 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
-    
-    <!-- Icons -->
+                <a href="{{ route('home') }}" class="logo">
+                <div class="logo-img" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%); border: 3px solid #1055C9; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(16, 85, 201, 0.3);">
+                    <!-- Sky background -->
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(180deg, #87CEEB, #4682B4);"></div>
+                    <!-- Mountains -->
+                    <div style="position: absolute; top: 35%; left: 10%; width: 80%; height: 25%; background: linear-gradient(45deg, #228B22, #32CD32); clip-path: polygon(0% 100%, 30% 0%, 60% 40%, 100% 100%);"></div>
+                    <!-- Building/City -->
+                    <div style="position: absolute; bottom: 25%; left: 25%; width: 50%; height: 20%; background: #1055C9; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-building" style="color: white; font-size: 12px;"></i>
+                    </div>
+                    <!-- Traditional pattern at bottom -->
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: repeating-linear-gradient(90deg, #FFD700 0px, #FFD700 4px, #FFA500 4px, #FFA500 8px);"></div>
+                </div>
+                <div class="logo-text">
+                    <div style="font-size: 0.85rem; line-height: 1.1;">INSPEKTORAT</div>
+                    <div style="font-size: 0.75rem; color: #1055C9;">KOTA TASIKMALAYA</div>
+                </div>
+            </a>Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <!-- AOS Animation -->
@@ -519,7 +535,10 @@
         <div class="nav-container">
             <a href="{{ route('home') }}" class="logo">
                 <div class="logo-img">
-                    <i class="fas fa-shield-alt"></i>
+                    <!-- Logo Kota Tasikmalaya menggunakan FontAwesome icon sebagai placeholder -->
+                    <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #FFD700, #FFA500); border: 2px solid #1055C9; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        <i class="fas fa-shield-alt" style="color: #1055C9; font-size: 18px;"></i>
+                    </div>
                 </div>
                 <div class="logo-text">
                     <div style="font-size: 0.85rem; line-height: 1.1;">INSPEKTORAT</div>

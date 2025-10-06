@@ -3,6 +3,10 @@
 @section('title', 'Kontak - Inspektorat Kota Tasikmalaya')
 
 @push('styles')
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
 <style>
     .page-header {
         background: linear-gradient(135deg, rgba(16, 85, 201, 0.9), rgba(12, 74, 156, 0.9)),
@@ -29,6 +33,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         margin-bottom: 4rem;
+        align-items: start;
     }
 
     .contact-info {
@@ -40,60 +45,101 @@
         font-weight: 700;
         color: #2c3e50;
         margin-bottom: 2rem;
+        text-align: center;
     }
 
     .contact-item {
         display: flex;
         align-items: flex-start;
         gap: 1.5rem;
-        margin-bottom: 2.5rem;
-        padding: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 2rem;
         background: white;
         border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
+        border: 1px solid rgba(16, 85, 201, 0.1);
     }
 
     .contact-item:hover {
         transform: translateY(-5px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 16px 48px rgba(16, 85, 201, 0.2);
+        border-color: rgba(16, 85, 201, 0.3);
     }
 
     .contact-icon {
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
         background: linear-gradient(135deg, #1055C9, #0c4a9c);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         flex-shrink: 0;
+        box-shadow: 0 4px 16px rgba(16, 85, 201, 0.3);
+    }
+
+    .contact-details {
+        flex: 1;
     }
 
     .contact-details h4 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         font-weight: 600;
         color: #2c3e50;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
+        border-bottom: 2px solid #1055C9;
+        padding-bottom: 0.5rem;
+        display: inline-block;
     }
 
     .contact-details p {
-        color: #666;
-        line-height: 1.6;
+        color: #555;
+        line-height: 1.7;
         margin: 0;
+        font-size: 1rem;
     }
 
     .contact-details a {
         color: #1055C9;
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid transparent;
     }
 
     .contact-details a:hover {
-        color: #5a6fd8;
+        color: #0c4a9c;
+        border-bottom-color: #0c4a9c;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-info h2 {
+            font-size: 2rem;
+        }
+        
+        .contact-item {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details h4 {
+            font-size: 1.2rem;
+        }
     }
 
     .contact-form {
@@ -192,11 +238,88 @@
         overflow: hidden;
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
         height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
+    }
+
+    #map {
+        height: 100%;
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .leaflet-popup-content-wrapper {
+        border-radius: 8px;
+    }
+
+    .leaflet-popup-content {
+        margin: 15px;
+        font-family: inherit;
+    }
+
+    .popup-content h4 {
+        margin: 0 0 8px 0;
+        color: #1055C9;
+        font-weight: 600;
+    }
+
+    .popup-content p {
+        margin: 4px 0;
+        font-size: 14px;
         color: #666;
+    }
+
+    .info-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    .info-card h4 {
+        color: #1055C9;
+        margin-bottom: 1rem;
         font-size: 1.2rem;
+    }
+
+    .info-card i {
+        margin-right: 0.5rem;
+    }
+
+    .info-card p {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            margin: 0 auto;
+        }
+        
+        .map-container {
+            height: 300px;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
     }
 
     .office-hours {
@@ -325,57 +448,117 @@
     }
 
     .quick-contact {
-        background: white;
+        background: linear-gradient(135deg, #f8f9fa, #ffffff);
         border-radius: 20px;
         padding: 3rem;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         margin-top: 4rem;
         text-align: center;
+        border: 1px solid rgba(16, 85, 201, 0.1);
     }
 
     .quick-contact h3 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         font-weight: 700;
         color: #2c3e50;
         margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .quick-contact h3::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(135deg, #1055C9, #5a6fd8);
+        border-radius: 2px;
     }
 
     .quick-contact p {
         color: #666;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
     }
 
     .quick-buttons {
-        display: flex;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
         justify-content: center;
-        flex-wrap: wrap;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     .quick-btn {
-        padding: 1rem 2rem;
+        padding: 1.2rem 2rem;
         border-radius: 12px;
         text-decoration: none;
         font-weight: 600;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        justify-content: center;
+        gap: 0.8rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+    }
+
+    .quick-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
     .btn-whatsapp {
-        background: #25d366;
+        background: linear-gradient(135deg, #25d366, #128c7e);
         color: white;
+    }
+
+    .btn-whatsapp:hover {
+        background: linear-gradient(135deg, #128c7e, #25d366);
     }
 
     .btn-email {
-        background: #dc3545;
+        background: linear-gradient(135deg, #dc3545, #c82333);
         color: white;
     }
 
+    .btn-email:hover {
+        background: linear-gradient(135deg, #c82333, #dc3545);
+    }
+
     .btn-phone {
-        background: #007bff;
+        background: linear-gradient(135deg, #007bff, #0056b3);
         color: white;
+    }
+
+    .btn-phone:hover {
+        background: linear-gradient(135deg, #0056b3, #007bff);
+    }
+
+    /* Responsive Design untuk Quick Contact */
+    @media (max-width: 768px) {
+        .quick-contact {
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .quick-contact h3 {
+            font-size: 1.8rem;
+        }
+        
+        .quick-buttons {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .quick-btn {
+            padding: 1rem 1.5rem;
+        }
+    }
     }
 
     .quick-btn:hover {
@@ -470,12 +653,7 @@
                     </div>
                     <div class="contact-details">
                         <h4>Fax</h4>
-                        <p>(0265) 331-549</p>
-                    </div>
-                </div>
-                    <div class="contact-details">
-                        <h4>Fax</h4>
-                        <p>(0265) 331-466</p>
+                        <p>(0265) 331-549<br>(0265) 331-466</p>
                     </div>
                 </div>
 
@@ -497,6 +675,18 @@
                     <div class="contact-details">
                         <h4>Website</h4>
                         <p><a href="https://inspektorat.tasikmalayakota.go.id" target="_blank">inspektorat.tasikmalayakota.go.id</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Jam Operasional</h4>
+                        <p><strong>Senin - Kamis:</strong> 08:00 - 16:00 WIB<br>
+                        <strong>Jumat:</strong> 08:00 - 16:30 WIB<br>
+                        <strong>Sabtu - Minggu:</strong> Tutup</p>
                     </div>
                 </div>
             </div>
@@ -631,12 +821,24 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Lokasi Kantor</h2>
         <div class="map-container" data-aos="fade-up" data-aos-delay="200">
-            <div style="text-align: center;">
-                <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: #1055C9; margin-bottom: 1rem;"></i>
-                <p style="margin: 0;">Peta lokasi akan ditampilkan di sini</p>
-                <p style="margin: 0; font-size: 0.9rem; color: #888;">
-                    Jl. Yudanegara No. 12, Kecamatan Cipedes, Kota Tasikmalaya
-                </p>
+            <div id="map"></div>
+        </div>
+        <!-- Map Info -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+                    <h4><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</h4>
+                    <p>Jl. Letnan Harun No. 1, Sukamulya, Kec. Bungursari, Tasikmalaya, Jawa Barat 46151</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="400">
+                    <h4><i class="fas fa-directions"></i> Petunjuk Arah</h4>
+                    <p>Kantor Inspektorat berada di pusat kota Tasikmalaya, mudah diakses dari berbagai arah.</p>
+                    <a href="https://goo.gl/maps/example" target="_blank" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-external-link-alt"></i> Buka di Google Maps
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -644,7 +846,71 @@
 @endsection
 
 @push('scripts')
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
 <script>
+    // Initialize map when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Coordinates for Inspektorat Kota Tasikmalaya
+        // Approximate coordinates for Tasikmalaya city center
+        const lat = -7.3274;
+        const lng = 108.2207;
+        
+        // Initialize the map
+        const map = L.map('map').setView([lat, lng], 16);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+        
+        // Custom icon for the marker
+        const customIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `<div style="
+                background: #1055C9;
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50% 50% 50% 0;
+                transform: rotate(-45deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 3px solid white;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            ">
+                <i class="fas fa-building" style="transform: rotate(45deg); font-size: 16px;"></i>
+            </div>`,
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40]
+        });
+        
+        // Add marker
+        const marker = L.marker([lat, lng], {icon: customIcon}).addTo(map);
+        
+        // Add popup
+        marker.bindPopup(`
+            <div class="popup-content">
+                <h4><i class="fas fa-building"></i> Inspektorat Kota Tasikmalaya</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Letnan Harun No. 1, Sukamulya</p>
+                <p><i class="fas fa-location-arrow"></i> Kec. Bungursari, Tasikmalaya</p>
+                <p><i class="fas fa-phone"></i> (0265) 331-548</p>
+                <p><i class="fas fa-envelope"></i> inspektorat@tasikmalayakota.go.id</p>
+            </div>
+        `).openPopup();
+        
+        // Add click event to open popup
+        map.on('click', function(e) {
+            marker.openPopup();
+        });
+    });
+
     // Contact form submission
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
